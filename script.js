@@ -131,7 +131,6 @@ function showFinalVideo(){
     pageVideo.play();
 
     restartButton.style.display = "block";
-    coverButton.style.display = "block";
 
 }
 
@@ -150,7 +149,6 @@ function hideAllButtons(){
     animateButton.style.display = "none";
     nextButton.style.display = "none";
     restartButton.style.display = "none";
-    coverButton.style.display = "none";
     prevButton.style.display = "none";
 
 }
