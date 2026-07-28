@@ -143,7 +143,11 @@ function showFinalVideo(){
 
     pageVideo.src = "video/coverBack.mp4";
 
+    pageVideo.loop = true;
+
     pageVideo.style.display = "block";
+
+    pageVideo.load();
 
     pageVideo.play();
 
