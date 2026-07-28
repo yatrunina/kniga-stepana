@@ -29,7 +29,9 @@ body {
 .book video {
     display: block;
     width: 100%;
-    height: auto;
+    max-height: 85vh;
+    object-fit: contain;
+    margin: auto;
 }
 
 .book video {
