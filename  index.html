@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книга Степана</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="book">
+
+        <img id="pageImage" src="images/cover.png" alt="Книга">
+
+	<video
+		id="pageVideo"
+    		loop
+    		muted
+    		playsinline
+    		style="display:none;">
+	</video>
+
+    </div>
+
+    <div class="buttons">
+
+    <button id="startButton">
+        📖 Читать книгу
+    </button>
+
+    <button id="animateButton" style="display:none;">
+        ✨ Оживить рисунок
+    </button>
+
+    <button id="nextButton" style="display:none;">
+        ➜ Следующая страница
+    </button>
+
+    <button id="restartButton" style="display:none;">
+        📖 Читать ещё раз
+    </button>
+
+    <button id="coverButton" style="display:none;">
+        🏠 На обложку
+    </button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
