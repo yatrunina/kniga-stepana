@@ -5,6 +5,7 @@ let isVideo = false;
 
 const pageImage = document.getElementById("pageImage");
 const pageVideo = document.getElementById("pageVideo");
+const loading = document.getElementById("loading");
 
 const startButton = document.getElementById("startButton");
 const animateButton = document.getElementById("animateButton");
@@ -27,6 +28,10 @@ function showCover() {
     hideAllButtons();
 
     startButton.style.display = "block";
+
+    // заранее готовим первую страницу
+    preloadImage(1);
+    preloadVideo(1);
 }
 
 
@@ -45,17 +50,38 @@ function showPage(){
 
     isVideo = false;
 
+    hideAllButtons();
+
+    loading.style.display = "block";
+
+
     pageVideo.pause();
     pageVideo.removeAttribute("src");
     pageVideo.load();
     pageVideo.style.display = "none";
 
-    pageImage.src = `images/page${currentPage}.png`;
-    pageImage.style.display = "block";
 
-    hideAllButtons();
+    const img = new Image();
 
-    animateButton.style.display = "block";
+
+    img.onload = function(){
+
+        pageImage.src = img.src;
+
+        pageImage.style.display = "block";
+
+        loading.style.display = "none";
+
+        animateButton.style.display = "block";
+
+
+        // готовим следующую страницу
+        preloadNextPage();
+
+    };
+
+
+    img.src = `images/page${currentPage}.png`;
 
 }
 
@@ -63,24 +89,32 @@ function showPage(){
 // оживить страницу
 animateButton.onclick = function(){
 
-    isVideo = true;
+    hideAllButtons();
+
+    loading.style.display = "block";
+
 
     pageImage.style.display = "none";
+
 
     pageVideo.src = `video/page${currentPage}.mp4`;
 
     pageVideo.style.display = "block";
 
     pageVideo.load();
-    
-    pageVideo.play();
 
-    hideAllButtons();
 
-    nextButton.style.display = "block";
+    pageVideo.oncanplaythrough = function(){
+
+        loading.style.display = "none";
+
+        pageVideo.play();
+
+        nextButton.style.display = "block";
+
+    };
 
 };
-
 
 // следующая страница
 nextButton.onclick = function(){
@@ -137,3 +171,40 @@ function hideAllButtons(){
 
 // запуск при открытии сайта
 showCover();
+function preloadImage(page){
+
+    if(page <= totalPages){
+
+        const img = new Image();
+
+        img.src = `images/page${page}.png`;
+
+    }
+
+}
+
+
+
+function preloadVideo(page){
+
+    if(page <= totalPages){
+
+        const video = document.createElement("video");
+
+        video.src = `video/page${page}.mp4`;
+
+        video.preload = "auto";
+
+    }
+
+}
+
+
+
+function preloadNextPage(){
+
+    preloadImage(currentPage + 1);
+
+    preloadVideo(currentPage + 1);
+
+}
