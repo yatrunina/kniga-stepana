@@ -11,8 +11,6 @@ const animateButton = document.getElementById("animateButton");
 const nextButton = document.getElementById("nextButton");
 
 const restartButton = document.getElementById("restartButton");
-const prevButton = document.getElementById("prevButton");
-
 
 // показать обложку
 function showCover() {
@@ -59,10 +57,6 @@ function showPage(){
 
     animateButton.style.display = "block";
 
-    if(currentPage > 1){
-        prevButton.style.display = "block";
-    }
-
 }
 
 
@@ -105,17 +99,6 @@ nextButton.onclick = function(){
 
 };
 
-prevButton.onclick = function(){
-
-    if(currentPage > 1){
-
-        currentPage--;
-        showPage();
-
-    }
-
-};
-
 
 // финальное видео
 function showFinalVideo(){
@@ -149,8 +132,6 @@ function hideAllButtons(){
     animateButton.style.display = "none";
     nextButton.style.display = "none";
     restartButton.style.display = "none";
-    prevButton.style.display = "none";
-
 }
 
 
