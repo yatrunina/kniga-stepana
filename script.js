@@ -48,6 +48,8 @@ function showPage(){
     isVideo = false;
 
     pageVideo.pause();
+    pageVideo.removeAttribute("src");
+    pageVideo.load();
     pageVideo.style.display = "none";
 
     pageImage.src = `images/page${currentPage}.png`;
@@ -71,6 +73,8 @@ animateButton.onclick = function(){
 
     pageVideo.style.display = "block";
 
+    pageVideo.load();
+    
     pageVideo.play();
 
     hideAllButtons();
