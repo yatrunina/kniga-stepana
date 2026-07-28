@@ -67,7 +67,7 @@ animateButton.onclick = function(){
 
     pageImage.style.display = "none";
 
-    pageVideo.src = `videos/page${currentPage}.mp4`;
+    pageVideo.src = `video/page${currentPage}.mp4`;
 
     pageVideo.style.display = "block";
 
@@ -105,7 +105,7 @@ function showFinalVideo(){
 
     pageImage.style.display = "none";
 
-    pageVideo.src = "videos/coverBack.mp4";
+    pageVideo.src = "video/coverBack.mp4";
 
     pageVideo.style.display = "block";
 
